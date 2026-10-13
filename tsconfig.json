@@ -1,0 +1,3 @@
+{
+  "extends": "@honote/config/tsconfig.base.json"
+}

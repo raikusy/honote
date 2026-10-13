@@ -1,0 +1,352 @@
+@import "@honote/ui/globals.css";
+
+@theme inline {
+  --font-sans: "Outfit", ui-sans-serif, sans-serif;
+  --font-display: "Fraunces", ui-serif, serif;
+}
+
+:root {
+  --background: oklch(0.965 0.014 88);
+  --foreground: oklch(0.22 0.03 55);
+  --card: oklch(0.985 0.01 90);
+  --card-foreground: oklch(0.22 0.03 55);
+  --popover: oklch(0.985 0.01 90);
+  --popover-foreground: oklch(0.22 0.03 55);
+  --primary: oklch(0.52 0.13 58);
+  --primary-foreground: oklch(0.98 0.01 90);
+  --secondary: oklch(0.93 0.02 85);
+  --secondary-foreground: oklch(0.28 0.03 55);
+  --muted: oklch(0.93 0.016 85);
+  --muted-foreground: oklch(0.46 0.03 60);
+  --accent: oklch(0.9 0.04 75);
+  --accent-foreground: oklch(0.24 0.04 55);
+  --border: oklch(0.86 0.02 80);
+  --input: oklch(0.88 0.02 82);
+  --ring: oklch(0.58 0.12 58);
+}
+
+.dark {
+  --background: oklch(0.145 0.012 70);
+  --foreground: oklch(0.95 0.015 90);
+  --card: oklch(0.185 0.014 68);
+  --card-foreground: oklch(0.95 0.015 90);
+  --popover: oklch(0.185 0.014 68);
+  --popover-foreground: oklch(0.95 0.015 90);
+  --primary: oklch(0.82 0.13 82);
+  --primary-foreground: oklch(0.18 0.03 60);
+  --secondary: oklch(0.24 0.016 65);
+  --secondary-foreground: oklch(0.95 0.015 90);
+  --muted: oklch(0.24 0.014 65);
+  --muted-foreground: oklch(0.74 0.02 85);
+  --accent: oklch(0.3 0.04 70);
+  --accent-foreground: oklch(0.96 0.02 90);
+  --border: oklch(0.95 0.02 90 / 12%);
+  --input: oklch(0.95 0.02 90 / 16%);
+  --ring: oklch(0.78 0.12 82);
+}
+
+.honote-app {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  color: var(--foreground);
+  background:
+    radial-gradient(
+      70% 55% at 100% 0%,
+      color-mix(in oklch, var(--primary) 34%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(42% 48% at 0% 100%, oklch(0.42 0.07 210 / 0.28), transparent 62%),
+    var(--background);
+}
+
+.honote-app::after {
+  content: "journal";
+  position: fixed;
+  right: -1vw;
+  bottom: -6vh;
+  z-index: 0;
+  color: color-mix(in oklch, var(--foreground) 7%, transparent);
+  font-family: Fraunces, ui-serif, serif;
+  font-size: clamp(7rem, 22vw, 18rem);
+  letter-spacing: -0.07em;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+.honote-app > * {
+  position: relative;
+  z-index: 1;
+}
+
+.honote-app::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: radial-gradient(oklch(1 0 0 / 0.55) 0.55px, transparent 0.55px);
+  background-size: 3px 3px;
+}
+
+.honote-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.85rem 1.5rem;
+  padding: 0.9rem clamp(1rem, 3vw, 2rem) 0.85rem;
+  border-bottom: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+  background: color-mix(in oklch, var(--background) 78%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.honote-mark {
+  display: grid;
+  gap: 0.05rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.honote-mark-kicker {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.honote-mark-name {
+  font-family: Fraunces, ui-serif, serif;
+  font-size: 1.85rem;
+  font-weight: 560;
+  font-variation-settings:
+    "SOFT" 40,
+    "WONK" 1;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+}
+
+.honote-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.honote-nav a,
+.honote-nav button {
+  border-radius: 999px;
+  padding: 0.38rem 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  background: transparent;
+}
+
+.honote-nav a:hover,
+.honote-nav button:hover,
+.honote-nav a.is-active {
+  color: var(--foreground);
+  background: color-mix(in oklch, var(--primary) 16%, transparent);
+}
+
+.honote-nav a:focus-visible,
+.honote-nav button:focus-visible,
+.honote-app a:focus-visible,
+.honote-app button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.honote-app main {
+  width: min(72rem, calc(100% - clamp(1.25rem, 4vw, 3.5rem)));
+  margin-inline: auto;
+  padding-block: clamp(1.75rem, 4vw, 3.25rem) 4.5rem;
+}
+
+.honote-auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 24rem);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  width: min(72rem, calc(100% - clamp(1.25rem, 4vw, 3.5rem)));
+}
+
+.honote-auth-copy p:last-child {
+  max-width: 22rem;
+  color: var(--muted-foreground);
+  font-family: Fraunces, ui-serif, serif;
+  font-size: 1.25rem;
+  line-height: 1.45;
+}
+
+.honote-app main.max-w-sm,
+.honote-app main.max-w-xl {
+  width: min(28rem, calc(100% - clamp(1.25rem, 4vw, 3.5rem)));
+}
+
+@media (max-width: 800px) {
+  .honote-auth {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.honote-app main.max-w-xl {
+  width: min(40rem, calc(100% - clamp(1.25rem, 4vw, 3.5rem)));
+}
+
+.honote-app h1 {
+  margin-bottom: 1.15rem;
+  font-family: Fraunces, ui-serif, serif;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 560;
+  letter-spacing: -0.048em;
+  line-height: 0.92;
+}
+
+.honote-app h2 {
+  font-family: Fraunces, ui-serif, serif;
+  font-size: 1.8rem;
+  letter-spacing: -0.03em;
+}
+
+.honote-app main ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.honote-app main ul > li {
+  position: relative;
+  padding: 1.05rem 1.15rem 0.95rem 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+  background: color-mix(in oklch, var(--card) 84%, transparent);
+  box-shadow: 0 16px 40px oklch(0 0 0 / 0.12);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.honote-app main ul > li::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  left: 0;
+  width: 2px;
+  background: var(--primary);
+}
+
+.honote-app main ul > li:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklch, var(--primary) 55%, transparent);
+}
+
+.honote-app main ul > li > a {
+  display: block;
+  color: inherit;
+  font-family: Fraunces, ui-serif, serif;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-decoration: none;
+}
+
+.honote-app main ul > li > p,
+.honote-app main > p,
+.honote-app dd {
+  color: var(--muted-foreground);
+  font-size: 0.84rem;
+}
+
+.honote-app main > p.whitespace-pre-wrap {
+  max-width: 40rem;
+  color: var(--foreground);
+  font-family: Fraunces, ui-serif, serif;
+  font-size: 1.22rem;
+  font-weight: 460;
+  line-height: 1.55;
+}
+
+.honote-app main a {
+  color: var(--primary);
+  text-underline-offset: 0.18em;
+}
+
+.honote-app main ul > li > a {
+  color: inherit;
+}
+
+.honote-app main > nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.6rem;
+}
+
+.honote-app main > nav button {
+  border: 1px solid color-mix(in oklch, var(--foreground) 16%, transparent);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: transparent;
+}
+
+.honote-app main > nav button:disabled {
+  opacity: 0.4;
+}
+
+.honote-app table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.honote-app th {
+  padding: 0.55rem 1rem 0.55rem 0;
+  color: var(--muted-foreground);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.honote-app td {
+  padding: 0.8rem 1rem 0.8rem 0;
+  border-top: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+}
+
+.honote-app [role="alert"] {
+  color: var(--destructive);
+  font-size: 0.875rem;
+}
+
+.honote-app form button[type="submit"] {
+  justify-self: start;
+  margin-top: 0.25rem;
+  border-radius: 999px;
+  padding-inline: 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .honote-app main ul > li {
+    transition: none;
+  }
+
+  .honote-app main ul > li:hover {
+    transform: none;
+  }
+}
