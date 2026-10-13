@@ -1,6 +1,7 @@
 import type { RouterClient } from "@orpc/server";
 
 import { adminNotes } from "./admin-notes";
+import { adminSeed } from "./admin-seed";
 import { adminUsers } from "./admin-users";
 import { authRouter } from "./auth";
 import { notesRouter } from "./notes";
@@ -15,6 +16,7 @@ export const appRouter = {
   admin: {
     users: adminUsers,
     notes: adminNotes,
+    seed: adminSeed,
   },
 };
 

@@ -58,6 +58,9 @@ export default function Header() {
                   <Link to="/admin/interests" activeProps={{ className: "is-active" }}>
                     Interests
                   </Link>
+                  <Link to="/admin/seed" activeProps={{ className: "is-active" }}>
+                    Seed
+                  </Link>
                 </>
               ) : null}
               <button

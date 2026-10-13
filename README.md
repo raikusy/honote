@@ -88,7 +88,7 @@ Web: [http://localhost:3001](http://localhost:3001). API: [http://localhost:3000
 
 Sign in with `ADMIN_EMAIL` and `ADMIN_PASSWORD`.
 
-`bun run db:seed` deletes every user, note, and post, then inserts 20 users, 5 admins, 100 notes, and 100 posts. Their password is `seed-password-1`. Restart the server afterward if you still want the configured admin.
+`bun run db:seed` deletes every user, note, and post, then inserts 20 users, 5 admins, 100 notes, and 100 posts. Their password is `seed-password-1`. Restart the server afterward if you still want the configured admin. Admins can run the same replacement from `/admin/seed`.
 
 ## Scripts
 
