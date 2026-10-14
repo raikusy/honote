@@ -46,15 +46,11 @@ honote/
 │   ├── db/                  # Mongoose models and indexes (user, note, post)
 │   ├── ui/                  # Shared UI primitives and global styles
 │   └── config/              # Shared TypeScript config
-├── docs/                    # PRD and the API contract ADR
 ├── docker/                  # Replica-set entrypoint and healthcheck
-├── GLOSSARY.md
 └── docker-compose.yml
 ```
 
 Web routes follow the files in `apps/web/src/routes`: `/` posts, `/posts/$postId`, `/users/$userId/posts`, `/login`, `/register`, `/password`, `/profile`, `/notes`, `/my-posts`, and `/admin/users`, `/admin/notes`, `/admin/interests`.
-
-Domain language is in `GLOSSARY.md`. The product contract is `docs/PRD.md`. Why RPC and REST share one router is `docs/adr/0001-orpc-under-api-v1.md`.
 
 ## Getting started
 
